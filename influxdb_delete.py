@@ -9,7 +9,7 @@ Delete Data
 """
 start = "1970-01-01T00:00:00Z"
 stop = "now()"
-delete_api.delete(start, stop, '_measurement="measurement1"', bucket='mybucket', org='bosch')
+delete_api.delete(start, stop, '_measurement="measurement1"', bucket='hot_butyl', org='bosch')
 
 """
 Close client

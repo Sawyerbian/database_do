@@ -1,0 +1,2 @@
+# excludes influxdb write-in data.
+/data/*

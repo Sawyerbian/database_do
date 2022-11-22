@@ -4,10 +4,10 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 from tqdm import tqdm
 def connection():
     token = os.environ.get("INFLUXDB_TOKEN")
-    org = "bosch"
+    org = "battery"
     #url = "https://us-west-2-1.aws.cloud2.influxdata.com/"
 
-    client = InfluxDBClient(url="http://localhost:8086",token=token, org=org)
+    client = InfluxDBClient(url="http://localhost:8088",token=token, org=org)
     print('connection done')
     return client
 

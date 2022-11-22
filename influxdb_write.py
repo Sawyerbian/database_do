@@ -4,7 +4,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 import influxdb_config
 client = influxdb_config.connection()
 
-bucket="pre_maint"
+bucket="hot_butyl"
 
 write_api = client.write_api(write_options=SYNCHRONOUS)
    
@@ -16,7 +16,7 @@ for value in np.random.random(10):
       .tag("location", location)
       .field("temperature", value)
     )
-    write_api.write(bucket=bucket, org="bosch", record=point)
+    write_api.write(bucket=bucket, org="battery", record=point)
     #time.sleep(1) # separate points by 1 second
 
 print(f'write is done')
