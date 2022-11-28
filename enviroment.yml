@@ -1,5 +1,0 @@
-name: pre_maint
-channels:
-  - defaults
-prefix: C:\Users\bih1wx\.conda\envs\pre_maint
-
