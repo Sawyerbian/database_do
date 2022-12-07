@@ -7,9 +7,9 @@ delete_api = client.delete_api()
 """
 Delete Data
 """
-start = "1970-01-01T00:00:00Z"
-stop = "now()"
-delete_api.delete(start, stop, '_measurement="measurement1"', bucket='hot_butyl', org='bosch')
+start = "2022-11-18T01:31:38.0750572Z"
+stop = "2022-11-27T01:31:38.0750572Z"
+delete_api.delete(start, stop, '_measurement="measurement1"', bucket='hot_butyl', org='battery')
 
 """
 Close client

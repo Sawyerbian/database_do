@@ -2,6 +2,7 @@ import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 import influxdb_config
+import numpy as np
 client = influxdb_config.connection()
 
 bucket="hot_butyl"

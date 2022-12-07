@@ -1,2 +1,5 @@
 # excludes influxdb write-in data.
 /data/*
+/influxdb.tar
+/influxdb-python
+/influxdb-client-python
