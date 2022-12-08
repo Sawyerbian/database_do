@@ -45,7 +45,7 @@ def read_df(df_name):
 # define a fuc to pull data by interal of pull_interval = np.int64(600) # unit: "s"
 
 def slice_timestamp(pull_interval):
-    df_list = glob(os.path.join(main_dir,'./data/*'))
+    df_list = glob(os.path.join(main_dir,'./data/*.csv'))
     df_name = sorted(df_list, key=lambda t: os.stat(t).st_mtime)[-1]   # sort file by create time
     last_df = read_df(df_name)
     last_pull_timestamp = pd.to_datetime(last_df.iloc[[-1],:].index.values[0]) # get initial last pull timestamp 
@@ -53,7 +53,7 @@ def slice_timestamp(pull_interval):
     while True:
     
         now = datetime.datetime.now(tz=pytz.utc)  + datetime.timedelta(hours=16)
-        delta_to_now = (now - last_pull_timestamp).total_seconds() + 1   # make sure overlap
+        delta_to_now = (now - last_pull_timestamp).total_seconds()
 
         if delta_to_now < pull_interval:
             time_to_pull = np.int64(pull_interval - delta_to_now)
@@ -64,7 +64,7 @@ def slice_timestamp(pull_interval):
                 #print(delta, end='/r')
             pbar.close()
             continue
-        internal_start = str(np.int64(delta_to_now)) + "s"
+        internal_start = str(np.int64(delta_to_now) + 1) + "s"   # +1 to ensure data overlaping
         internal_end = str(np.int64(delta_to_now - pull_interval)) + "s"
         pull_func(internal_start, internal_end)
         print(f'pull data from time : {last_pull_timestamp}')
